@@ -15,8 +15,8 @@ const Home = () => {
           height="auto"
         />
       </div>
-      <hr />
-      <div className="container" id="#home">
+      
+      <div className="container mt-5" id="#home">
         <div className="row text-center">
           <h1 className="display-1 fw-normal">
             פלטפורמה חברתית למציאת בעלי עסקים בתחום הכלבנות

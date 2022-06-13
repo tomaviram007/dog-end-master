@@ -47,6 +47,7 @@ import AllUsers from "./components/pages/user/allUsers";
 import AllUsersOnline from "./components/pages/user/allUsersOnline";
 import GeneralArticle from "./components/pages/allArticles/generalArticle";
 import ProtectAdmin from "./components/pages/user/protectAdmin";
+import AboutUs from "./components/pages/about_us";
 
 function App() {
   const param = useParams();
@@ -75,6 +76,7 @@ function App() {
         <Route path="/cardTrainer" element={<CardTrainer />} />
         <Route path="/createCardTrainer" element={<CreateCardTrainer />} />
         <Route path="/createCardWalker" element={<CreateCardWalker />} />
+        <Route path="/aboutUs" element={<AboutUs />} />
 
         <Route
           path="/deleteCardWalker/:id/:location"
