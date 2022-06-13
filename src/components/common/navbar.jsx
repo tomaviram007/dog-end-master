@@ -146,7 +146,7 @@ const NavbarComp = () => {
                   </Nav.Link>
                 </>
               )}
-              <Nav.Link href="/contactus">צור קשר</Nav.Link>
+              <Nav.Link href="/contactUs">צור קשר</Nav.Link>
               <Nav.Link href="/aboutUs">אודותינו</Nav.Link>
             </Nav>
           </Navbar.Collapse>

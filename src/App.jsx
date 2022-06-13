@@ -50,6 +50,7 @@ import Famousdogsinhistory from "./components/pages/allArticles/Famousdogsinhist
 import SelectingMyDog from "./components/pages/allArticles/selectingMyDog";
 import ProtectAdmin from "./components/pages/user/protectAdmin";
 import AboutUs from "./components/pages/about_us";
+import ContactForm from "./components/pages/contactUs";
 
 function App() {
   const param = useParams();
@@ -61,20 +62,18 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/contactUs" element={<ContactUs />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/contactUs" element={<ContactUs />} />
         <Route path="/login" element={<LoginTo />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/article" element={<Article />} />
+        <Route path="/A-dog-pees" element={<OutSideTheHome />} />
         <Route
-          path="/A-dog-pees" element={<OutSideTheHome />}
+          path="/Famous_dogs_in_history"
+          element={<Famousdogsinhistory />}
         />
-        <Route
-          path="/Famous_dogs_in_history" element={<Famousdogsinhistory />}
-        />
-        <Route
-          path="/selectingMyDog" element={<SelectingMyDog />}
-        />
+        <Route path="/selectingMyDog" element={<SelectingMyDog />} />
         <Route path="/dogwalker" element={<AllwalkersCards />} />
         <Route path="/dogtrainer" element={<AllTrainersCards />} />
         <Route path="/profile" element={<Profile />} />
