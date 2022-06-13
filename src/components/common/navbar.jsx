@@ -5,6 +5,9 @@ import userService from "../../services/userService/userService";
 import { useCookies } from "react-cookie";
 import config from "../../config.json";
 import { useState } from "react";
+import { toast } from "react-toastify";
+
+
 
 const NavbarComp = () => {
   const [cookies, setCookie] = useCookies(["data"]);
@@ -13,7 +16,18 @@ const NavbarComp = () => {
   const updateStatusOffline = async (e) => {
     try {
       await userService.updateOffline();
-    } catch ({ response }) {}
+    } catch ({ response }) {
+      // ToastContainer
+      toast.error(response.data, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   useEffect(() => {
@@ -83,10 +97,30 @@ const NavbarComp = () => {
                 ) : (
                   <>
                     <NavDropdown.Item href="/profile">
-                      הפרופיל שלי <i className="bi bi-gear"> </i>{" "}
+                      <i className="bi bi-gear"></i> הפרופיל שלי
                     </NavDropdown.Item>
+                    {data.admin && (
+                      <Nav.Link href="/allUsers" title="כל המשתמשים">
+                        <i class="bi bi-people"></i> כל המשתמשים
+                      </Nav.Link>
+                    )}
+                    <NavDropdown title="המועדפים שלי" id="basic-nav-dropdown">
+                      <NavDropdown.Item
+                        href="/favoriteWalker"
+                        title="דוגווקרים מועדפים"
+                      >
+                        הדוגווקרים המועדפים עלי
+                      </NavDropdown.Item>
+                      <NavDropdown.Item
+                        href="/favoriteTrainer"
+                        title="המאלפים מועדפים"
+                      >
+                        המאלפים המועדפים עלי
+                      </NavDropdown.Item>
+                    </NavDropdown>
+
                     <NavDropdown.Item href="/logout" title="יציאה">
-                      יציאה <i className="bi bi-box-arrow-in-right"></i>
+                      <i className="bi bi-box-arrow-in-right"></i> יציאה
                     </NavDropdown.Item>
                   </>
                 )}
@@ -99,31 +133,17 @@ const NavbarComp = () => {
                 <>
                   <NavDropdown title="שירותים שלנו" id="basic-nav-dropdown">
                     <NavDropdown.Item href="/dogtrainer">
-                      מאלפים
+                     מאלפים
                     </NavDropdown.Item>
                     <NavDropdown.Item href="/dogwalker">
-                      דוגווקר
+                    דוגווקר 
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="/Article">
-                      מאמרים
-                    </NavDropdown.Item>
+                    <NavDropdown.Item href="/Article">מאמרים</NavDropdown.Item>
                   </NavDropdown>
-                  <Nav.Link href="/favoriteWalker" title="דוג ווקר מועדפים">
-                    כרטיסי דוגווקר מועדפים
-                  </Nav.Link>
-                  <Nav.Link href="/favoriteTrainer" title="טרינר מועדפים">
-                    כרטיסי מאלפים מועדפים
-                  </Nav.Link>
 
-                  <Nav.Link href="/allUsersOnline" title="משתמשי אונליין">
+                  <Nav.Link href="/allUsersOnline" title="משתמשים אונליין">
                     משתמשים אונליין
                   </Nav.Link>
-
-                  {data.admin && (
-                    <Nav.Link href="/allUsers" title="כל המשתמשים">
-                      כל המשתמשים
-                    </Nav.Link>
-                  )}
                 </>
               )}
               <Nav.Link href="/contactus">צור קשר</Nav.Link>

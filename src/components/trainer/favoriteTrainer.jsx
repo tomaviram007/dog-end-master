@@ -21,7 +21,7 @@ const FavoriteTrainer = () => {
       setLoading(false);
     } catch ({ response }) {
       // ToastContainer
-      toast.error("לא התחברת לא יהיה תוכן! 😯 " + response.data, {
+      toast.error(response.data, {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -30,7 +30,6 @@ const FavoriteTrainer = () => {
         draggable: true,
         progress: undefined,
       });
-      console.log(response);
     }
   };
 
@@ -50,8 +49,8 @@ const FavoriteTrainer = () => {
       setUpdatePage={true}
       loading={loading}
       numberPage={2}
-      Message={"עדיין לא סימנת מועדפים.. 🤷‍♂️ בטרינר"}
-      NameCards={"כרטיסי טרינר המועדפים עליי"}
+      Message={"עדיין לא סימנת מועדפים.. 🤷‍♂️ במאלפים"}
+      NameCards={"כרטיסי המאלפים המועדפים עליי"}
     />
   );
 };

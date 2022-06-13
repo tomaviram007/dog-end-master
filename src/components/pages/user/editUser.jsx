@@ -61,7 +61,16 @@ const EditUser = () => {
       setUserInf(info.data[0]);
       setLoad(false);
     } catch ({ response }) {
-      console.log(response.data);
+      // ToastContainer
+      toast.error(response.data, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -95,7 +104,16 @@ const EditUser = () => {
 
       setImagePreview(config.defaultImage);
     } catch ({ response }) {
-      console.log(response.data);
+      // ToastContainer
+      toast.error(response.data, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -248,7 +266,16 @@ const EditUser = () => {
                       });
                       window.location = `/${params.location}`;
                     } catch ({ response }) {
-                      console.log(response.data);
+                      // ToastContainer
+                      toast.error(response.data, {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                      });
                     }
                   }}
                   enableReinitialize

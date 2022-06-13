@@ -19,7 +19,18 @@ const AllWalkersCards = () => {
       user = await userService.getInfoUserById(user_id);
 
       return user.data;
-    } catch (err) {}
+    } catch (response) {
+       // ToastContainer
+       toast.error( response.data, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   const getAllWalkers = async () => {
@@ -48,7 +59,7 @@ const AllWalkersCards = () => {
         draggable: true,
         progress: undefined,
       });
-      console.log(response);
+      
     }
   };
 
@@ -73,14 +84,13 @@ const AllWalkersCards = () => {
     );
   }
   return (
-    <Container>
-      <div className="px-1 py-5 my-1 text-center">
+    <>
+      <div className=" text-center">
         <img
           className="d-block col-12 mx-auto mb-4"
-          src="https://images.unsplash.com/photo-1600077106724-946750eeaf3c?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=639&ixid=MnwxfDB8MXxyYW5kb218MHx8ZG9nfHx8fHx8MTY1MDM5OTcwMA&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1380"
-          alt=""
-          width="100%"
-          height="auto"
+          src="https://img.freepik.com/free-photo/portrait-cute-looking-calm-dog-cocker-spaniel-posing-isolated-white-background-smiling-doggie_155003-45836.jpg?t=st=1655154261~exp=1655154861~hmac=ee28694ea6859ceedf8f6a59548f72833c09e9739d2155aeb1bb6e10fd2fd8a6&w=1380"
+          alt="A staring dog"
+          style={{ width: "100%"  }}
         />
         <h1 className="display-5 fw-bold">
           הדוגווקרים של <span>DOGIT</span>
@@ -104,7 +114,7 @@ const AllWalkersCards = () => {
         Message={"עדיין אין כרטיסים במערכת.. 🤷‍♂️"}
         NameCards={"כרטיסי דוג ווקר"}
       />
-    </Container>
+    </>
   );
 };
 

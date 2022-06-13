@@ -14,11 +14,20 @@ const AllTrainersCards = () => {
   const getUserInf = async (user_id) => {
     try {
       let user = "";
-
       user = await userService.getInfoUserById(user_id);
-
       return user.data;
-    } catch (err) {}
+    } catch (response) {
+      // ToastContainer
+      toast.error(response.data, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   const getAllTrainer = async () => {
@@ -38,16 +47,15 @@ const AllTrainersCards = () => {
       setLoading(false);
     } catch ({ response }) {
       // ToastContainer
-      // toast.error("לא התחברת לא יהיה תוכן! 😯", {
-      //   position: "top-center",
-      //   autoClose: 3000,
-      //   hideProgressBar: false,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      //   progress: undefined,
-      // });
-      console.log(response);
+      toast.error(response.data, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -73,14 +81,13 @@ const AllTrainersCards = () => {
   }
 
   return (
-    <Container>
-      <div className="px-1 py-5 my-1 text-center">
+    <>
+      <div className="text-center">
         <img
           className="d-block col-12 mx-auto mb-4"
-          src="https://images.unsplash.com/photo-1600077106724-946750eeaf3c?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=639&ixid=MnwxfDB8MXxyYW5kb218MHx8ZG9nfHx8fHx8MTY1MDM5OTcwMA&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1380"
-          alt=""
-          width="100%"
-          height="auto"
+          src="https://img.freepik.com/free-photo/happiness-cute-sweet-puppy-maltipoo-brown-dog-pet-posing-isolated-white-wall-concept-motion-pets-love-animal-life-looks-happy-funny-copyspace-ad-playing-running_155003-36749.jpg?t=st=1655154413~exp=1655155013~hmac=77b563dab91baabf4812a8886c8df8d4b874c6495d4a9599869b8f0e678642dd&w=1380"
+          alt="dog jumping"
+          style={{ width: "auto" }}
         />
         <h1 className="display-5 fw-bold">
           המאלפים של <span>DOGIT</span>
@@ -102,7 +109,7 @@ const AllTrainersCards = () => {
         Message={"עדיין אין כרטיסים במערכת.. 🤷‍♂️"}
         NameCards={"כרטיסי מאלפים"}
       />
-    </Container>
+    </>
   );
 };
 

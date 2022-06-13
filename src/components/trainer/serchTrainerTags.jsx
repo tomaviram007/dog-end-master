@@ -24,7 +24,7 @@ const SerchTrainerTags = () => {
       setLoading(false);
     } catch ({ response }) {
       // ToastContainer
-      toast.error("לא התחברת לא יהיה תוכן! 😯 " + response.data, {
+      toast.error(response.data, {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -33,7 +33,7 @@ const SerchTrainerTags = () => {
         draggable: true,
         progress: undefined,
       });
-      console.log(response);
+      
     }
   };
 
@@ -42,7 +42,7 @@ const SerchTrainerTags = () => {
   }, []);
 
   if (loading) {
-    return <h1 >טוען...</h1>;
+    return <h1 > הב הב טוען...</h1>;
   }
 
   if (!params.tag) {

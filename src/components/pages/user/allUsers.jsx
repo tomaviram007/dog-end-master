@@ -2,10 +2,8 @@ import userService from "../../../services/userService/userService";
 import config from "../../../config.json";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-
 import React, { useState, useEffect } from "react";
-
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 const TOKEN_KEY = "token";
 
@@ -33,7 +31,17 @@ const AllUsers = () => {
       setSearchUsers(info.data);
       setLoad(false);
     } catch ({ response }) {
-      console.log(response.data);
+       // ToastContainer
+       toast.error( response.data, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+     
     }
   };
 
@@ -42,7 +50,7 @@ const AllUsers = () => {
   }, []);
 
   if (load) {
-    return <h1>טעון תוכן ...</h1>;
+    return <h1>טוען תוכן ...</h1>;
   }
   const usersPerPage = 5;
   const pagesVisited = pageNumber * usersPerPage;

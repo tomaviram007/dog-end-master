@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Formik } from "formik";
-
+import { toast } from "react-toastify";
 import Meets from "../clockMeet/Meets";
 import cardService from "../../services/dogWalker/cardServiceDogWalker";
 import commonService from "../../services/commonService";
@@ -25,7 +25,18 @@ function EditCardWalker({ cardId, location }) {
 
       setLoad(false);
       // console.log(card);
-    } catch (err) {}
+    } catch (response) {
+      // ToastContainer
+      toast.error(response.data, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   useEffect(() => {
@@ -96,6 +107,16 @@ function EditCardWalker({ cardId, location }) {
               window.location = `/${loc}`;
             } catch ({ response }) {
               setErrorServ(response.data);
+              // ToastContainer
+              toast.error(response.data, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
             }
           }}
           enableReinitialize
@@ -206,7 +227,7 @@ function EditCardWalker({ cardId, location }) {
                     <br />
 
                     <button
-                    className="submit"
+                      className="submit"
                       type="submit"
                       id="regButton"
                       disabled={isSubmitting}

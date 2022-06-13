@@ -66,7 +66,7 @@ const UpdatePassword = () => {
               draggable: true,
               progress: undefined,
             });
-            console.log(response.data);
+           
           }
         }}
       >

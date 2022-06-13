@@ -14,6 +14,7 @@ import config from "../../config.json";
 import FavoriteWalker from "../walker/favoriteWalker";
 import TemplateCardTrainer from "../trainer/templateCardTrainer";
 import FavoriteTrainer from "../trainer/favoriteTrainer";
+import { toast } from "react-toastify";
 
 function Profile() {
   const [cookies] = useCookies(["data"]);
@@ -37,7 +38,16 @@ function Profile() {
       }
     } catch ({ response }) {
       setDataW(null);
-      console.log(response.data);
+      // ToastContainer
+      toast.error(response.data, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
   const getTCard = async () => {
@@ -49,7 +59,16 @@ function Profile() {
       }
     } catch ({ response }) {
       setDataT(null);
-      console.log(response.data);
+      // ToastContainer
+      toast.error(response.data, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -111,11 +130,7 @@ function Profile() {
         <hr />
       </div>
       {/* contact me */}
-     
 
-
-
-      
       {/* main content of the profile */}
       <div className="row">
         <div className="col-sm-12 col-md-12 col-lg-4 mt-4">
@@ -243,7 +258,7 @@ function Profile() {
           <u> הכרטיסים שלי</u>{" "}
         </h1>
       </div>
-      
+
       <div className="row">
         <div className="col-12 col-md-6">
           {dataW !== null && dataW && (

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Formik } from "formik";
+import { toast } from "react-toastify";
 
 const createTime = () => {
   let html = "";
@@ -54,7 +55,18 @@ const TempInput = ({ setDay, day }) => {
       //pic validation
       onSubmit={async (e, values) => {
         try {
-        } catch (e) {}
+        } catch (response) {
+          // ToastContainer
+          toast.error(response.data, {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
       }}
     >
       {({

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Formik } from "formik";
 import Meets from "../clockMeet/Meets";
 import cardService from "../../services/dogTrainer/cardServiceDogTrainer";
-
+import { toast } from "react-toastify";
 import commonService from "../../services/commonService";
 
 import Calendar from "./Calendar2";
@@ -87,6 +87,16 @@ function CreateCardTrainer() {
             window.location = "/profile";
           } catch ({ response }) {
             setErrorServ(response.data);
+            // ToastContainer
+            toast.error(response.data, {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
           }
         }}
       >
@@ -196,12 +206,10 @@ function CreateCardTrainer() {
               />
               {errors.tags && touched.tags ? <div>{errors.tags}</div> : null}
 
-
               <Meets setDays={setDays} days={days} />
               <br />
               {errorDay && <div className="text-danger">{errorDay}</div>}
 
-              
               <br />
               <br />
               <button

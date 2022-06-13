@@ -7,6 +7,7 @@ import { useCookies } from "react-cookie";
 import config from "../../config.json";
 import { BsHeart } from "react-icons/bs";
 import { BsFillSuitHeartFill } from "react-icons/bs";
+import { toast } from "react-toastify";
 
 //card: contain details about cardWalker
 //setUpdatePage:update favorite page when delete it from favorite
@@ -26,7 +27,18 @@ const TemplateCardTrainer = ({ card, setUpdatePage }) => {
 
       setCardFv(flag);
       setLoad(false);
-    } catch (err) {}
+    } catch (response) {
+       // ToastContainer
+       toast.error(response.data, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   //add  curent card on the favorite
@@ -42,7 +54,16 @@ const TemplateCardTrainer = ({ card, setUpdatePage }) => {
 
       setCardFv({ data: true });
     } catch ({ response }) {
-      console.log(response.data);
+      // ToastContainer
+      toast.error(response.data, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -62,7 +83,16 @@ const TemplateCardTrainer = ({ card, setUpdatePage }) => {
         window.location = "/favoriteTrainer";
       }
     } catch ({ response }) {
-      console.log(response.data);
+       // ToastContainer
+       toast.error(response.data, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 

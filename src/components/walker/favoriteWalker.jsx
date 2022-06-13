@@ -21,16 +21,15 @@ const FavoriteWalker = () => {
       setLoading(false);
     } catch ({ response }) {
       // ToastContainer
-      toast.error("לא התחברת לא יהיה תוכן! 😯 " + response.data, {
+      toast.error(response.data, {
         position: "top-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
       });
-      console.log(response);
     }
   };
 
@@ -45,13 +44,13 @@ const FavoriteWalker = () => {
   return (
     //Comp, cards, setUpdatePage, loading, numberPage }
     <AllCards
-          Comp={TemplateCardWalker}
+      Comp={TemplateCardWalker}
       cards={cards}
       setUpdatePage={true}
       loading={loading}
       numberPage={2}
       Message={"עדיין לא סימנת מועדפים.. 🤷‍♂️ בדוגווקר"}
-      NameCards={"כרטיסי דוג ווקר המועדפים עליי"}
+      NameCards={"כרטיסי הדוג-ווקר המועדפים עליי"}
     />
   );
 };

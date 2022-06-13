@@ -24,7 +24,7 @@ const SerchWalkerTags = () => {
       setLoading(false);
     } catch ({ response }) {
       // ToastContainer
-      toast.error("לא התחברת לא יהיה תוכן! 😯 " + response.data, {
+      toast.error( response.data, {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -33,7 +33,7 @@ const SerchWalkerTags = () => {
         draggable: true,
         progress: undefined,
       });
-      console.log(response);
+      
     }
   };
 

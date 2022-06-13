@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Formik } from "formik";
-
+import { toast } from "react-toastify";
 import Meets from "../clockMeet/Meets";
 import cardService from "../../services/dogTrainer/cardServiceDogTrainer";
 import commonService from "../../services/commonService";
@@ -24,8 +24,18 @@ function EditCardTrainer({ cardId, location }) {
       setDays(val.data[0].meets);
 
       setLoad(false);
-      // console.log(card);
-    } catch (err) {}
+    } catch (response) {
+      // ToastContainer
+      toast.error(response.data, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   useEffect(() => {
@@ -99,6 +109,16 @@ function EditCardTrainer({ cardId, location }) {
               window.location = `/${loc}`;
             } catch ({ response }) {
               setErrorServ(response.data);
+              // ToastContainer
+              toast.error(response.data, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
             }
           }}
           enableReinitialize
@@ -232,7 +252,7 @@ function EditCardTrainer({ cardId, location }) {
                   <br />
                   <div className="row">
                     <button
-                    className="submit"
+                      className="submit"
                       type="submit"
                       id="regButton"
                       disabled={isSubmitting}

@@ -4,6 +4,7 @@ import { Formik } from "formik";
 import Meets from "../clockMeet/Meets";
 import cardService from "../../services/dogWalker/cardServiceDogWalker";
 import commonService from "../../services/commonService";
+import { toast } from "react-toastify";
 
 function CreateCardWalker() {
   const [days, setDays] = useState({
@@ -82,6 +83,16 @@ function CreateCardWalker() {
           window.location = "/profile";
         } catch ({ response }) {
           setErrorServ(response.data);
+          // ToastContainer
+          toast.error(response.data, {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         }
       }}
     >
@@ -113,7 +124,8 @@ function CreateCardWalker() {
             {errors.experience && touched.experience ? (
               <div>{errors.experience}</div>
             ) : null}
-            <br /><br />
+            <br />
+            <br />
             <label htmlFor="timeWalker">משך זמן טיול</label>
             <br />
             <select

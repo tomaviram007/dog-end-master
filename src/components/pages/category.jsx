@@ -37,7 +37,6 @@ const Category = () => {
       )}
 
       {/*  article cards */}
-
       <div className="col-lg-4">
         <h5 className="center ">מאמרים</h5>
         <Link to="/article">

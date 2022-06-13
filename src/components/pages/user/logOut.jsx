@@ -1,10 +1,21 @@
 import React, { useEffect } from "react";
 import userService from "../../../services/userService/userService";
-
+import { toast } from "react-toastify";
 const updateStatus = async () => {
   try {
     await userService.updateOffline();
-  } catch ({ response }) {}
+  } catch ({ response }) {
+     // ToastContainer
+     toast.error(response.data, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
 };
 
 function Logout() {

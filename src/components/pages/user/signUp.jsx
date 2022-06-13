@@ -2,14 +2,12 @@ import userService from "../../../services/userService/userService";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 import { Formik } from "formik";
-// import { Link } from "react-router-dom";
-// import { Navigate } from "react-router-dom";
-
 import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 import "./signUp.css";
 import config from "../../../config.json";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -20,17 +18,14 @@ const SignUp = () => {
   const [imagePreview, setImagePreview] = useState(config.defaultImage);
 
   const [imgError, setImgError] = useState("");
-  // const regButton = document.getElementById("regButton");
 
   function validateImg(e) {
     setImgError("");
-    // regButton.disabled=false;
     const file = e.target.files[0];
     console.log(file);
     if (file.size >= 1048576) {
       //1048576
       setImgError("Image size maximum 1mb");
-      // regButton.disabled = true;
       return false;
     } else {
       setImage(file);
@@ -39,35 +34,8 @@ const SignUp = () => {
     console.log("change img");
   }
 
-  //cloudinary
-  // async function uploadImage() {
-  //   const data = new FormData();
-  //   if (!image) {
-  //     return "";
-  //   }
-  //   data.append("file", image);
-  //   data.append("upload_preset", "myUploadPreset");
-  //   try {
-  //     setUploadingImg(true);
-  //     let res = await fetch(
-  //       "https://api.cloudinary.com/v1_1/antoncloudinary/image/upload",
-  //       {
-  //         method: "post",
-  //         body: data,
-  //       }
-  //     );
-  //     const urlData = await res.json();
-  //     setUploadingImg(false);
-  //     console.log(urlData);
-  //     return urlData.url;
-  //   } catch (error) {
-  //     setUploadingImg(false);
-  //     console.log(error);
-  //   }
-  // }
-
   return (
-    <Container>
+    <Container style={{direction:"ltr"}}>
       <h1 className="text-center m-0">נא להירשם על מנת להיות חלק מהקהילה</h1>
       <Row className="signUp-row">
         <Col className="signUP-1-col" md={8} sm={false}></Col>
@@ -189,7 +157,16 @@ const SignUp = () => {
                 }
                 navigate(`/login`);
               } catch ({ response }) {
-                console.log(response.data);
+                // ToastContainer
+                toast.error(response.data, {
+                  position: "top-center",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                });
               }
             }}
           >

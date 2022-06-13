@@ -60,7 +60,7 @@ const LoginTo = () => {
             // console.log(data);
           } catch ({ response }) {
             // ToastContainer
-            toast.error("😯 התחברות לא הצליחה", {
+            toast.error(response.data, {
               position: "top-center",
               autoClose: 3000,
               hideProgressBar: false,
@@ -69,7 +69,6 @@ const LoginTo = () => {
               draggable: true,
               progress: undefined,
             });
-            console.log(response.data);
           }
         }}
       >

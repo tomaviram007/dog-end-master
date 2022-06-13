@@ -45,7 +45,9 @@ import ForgotEmail from "./components/pages/user/frogotEmail";
 import UpdatePassword from "./components/pages/user/updatePassword";
 import AllUsers from "./components/pages/user/allUsers";
 import AllUsersOnline from "./components/pages/user/allUsersOnline";
-import GeneralArticle from "./components/pages/allArticles/generalArticle";
+import OutSideTheHome from "./components/pages/allArticles/outSideTheHome";
+import Famousdogsinhistory from "./components/pages/allArticles/Famousdogsinhistory";
+import SelectingMyDog from "./components/pages/allArticles/selectingMyDog";
 import ProtectAdmin from "./components/pages/user/protectAdmin";
 import AboutUs from "./components/pages/about_us";
 
@@ -65,8 +67,13 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/article" element={<Article />} />
         <Route
-          path="/GeneralArticle/:title/:text"
-          element={<GeneralArticle />}
+          path="/A-dog-pees" element={<OutSideTheHome />}
+        />
+        <Route
+          path="/Famous_dogs_in_history" element={<Famousdogsinhistory />}
+        />
+        <Route
+          path="/selectingMyDog" element={<SelectingMyDog />}
         />
         <Route path="/dogwalker" element={<AllwalkersCards />} />
         <Route path="/dogtrainer" element={<AllTrainersCards />} />
