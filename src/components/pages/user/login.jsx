@@ -1,14 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
 import userService from "../../../services/userService/userService";
 import { Formik } from "formik";
 import { useCookies } from "react-cookie";
-import { Link, Route } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const LoginTo = () => {
-  const [cookies, setCookie] = useCookies(["data"]);
+  const [cookies] = useCookies(["data"]);
   const navigate = useNavigate();
 
   console.log("cookies data", cookies.data);

@@ -1,13 +1,10 @@
-import React, { Component, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Navbar, Container, Nav, NavDropdown, NavLink } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import userService from "../../services/userService/userService";
 import { useCookies } from "react-cookie";
 import config from "../../config.json";
 import { useState } from "react";
 import { toast } from "react-toastify";
-
-
 
 const NavbarComp = () => {
   const [cookies, setCookie] = useCookies(["data"]);
@@ -133,10 +130,10 @@ const NavbarComp = () => {
                 <>
                   <NavDropdown title="שירותים שלנו" id="basic-nav-dropdown">
                     <NavDropdown.Item href="/dogtrainer">
-                     מאלפים
+                      מאלפים
                     </NavDropdown.Item>
                     <NavDropdown.Item href="/dogwalker">
-                    דוגווקר 
+                      דוגווקר
                     </NavDropdown.Item>
                     <NavDropdown.Item href="/Article">מאמרים</NavDropdown.Item>
                   </NavDropdown>

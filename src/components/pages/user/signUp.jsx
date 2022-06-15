@@ -1,9 +1,7 @@
 import userService from "../../../services/userService/userService";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-
 import { Formik } from "formik";
 import React, { useState } from "react";
-
 import { useNavigate } from "react-router-dom";
 import "./signUp.css";
 import config from "../../../config.json";
@@ -14,7 +12,6 @@ const SignUp = () => {
 
   //image upload states
   const [image, setImage] = useState(null);
-  const [uploadingImg, setUploadingImg] = useState(false); //dont upload image by default
   const [imagePreview, setImagePreview] = useState(config.defaultImage);
 
   const [imgError, setImgError] = useState("");
@@ -35,7 +32,7 @@ const SignUp = () => {
   }
 
   return (
-    <Container style={{direction:"ltr"}}>
+    <Container style={{ direction: "ltr" }}>
       <h1 className="text-center m-0">נא להירשם על מנת להיות חלק מהקהילה</h1>
       <Row className="signUp-row">
         <Col className="signUP-1-col" md={8} sm={false}></Col>

@@ -4,12 +4,10 @@ import walkerService from "../../services/dogWalker/cardServiceDogWalker";
 import { toast } from "react-toastify";
 import userService from "../../services/userService/userService";
 import AllCards from "../common/allCards";
-import { Container } from "react-bootstrap";
 
 const AllWalkersCards = () => {
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [pageNumber, setPageNumber] = useState(0);
 
   //get inforamtion about user's cuurent card
   const getUserInf = async (user_id) => {
@@ -20,8 +18,8 @@ const AllWalkersCards = () => {
 
       return user.data;
     } catch (response) {
-       // ToastContainer
-       toast.error( response.data, {
+      // ToastContainer
+      toast.error(response.data, {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -59,7 +57,6 @@ const AllWalkersCards = () => {
         draggable: true,
         progress: undefined,
       });
-      
     }
   };
 
@@ -90,7 +87,7 @@ const AllWalkersCards = () => {
           className="d-block col-12 mx-auto mb-4"
           src="https://img.freepik.com/free-photo/portrait-cute-looking-calm-dog-cocker-spaniel-posing-isolated-white-background-smiling-doggie_155003-45836.jpg?t=st=1655154261~exp=1655154861~hmac=ee28694ea6859ceedf8f6a59548f72833c09e9739d2155aeb1bb6e10fd2fd8a6&w=1380"
           alt="A staring dog"
-          style={{ width: "100%"  }}
+          style={{ width: "100%" }}
         />
         <h1 className="display-5 fw-bold">
           הדוגווקרים של <span>DOGIT</span>

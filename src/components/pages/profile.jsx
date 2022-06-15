@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
 import CreateCardTrainer from "../trainer/createCardTrainer";
 import CreateCardWalker from "../walker/createCardWalker";
 import cardServiceW from "../../services/dogWalker/cardServiceDogWalker";
@@ -14,12 +12,10 @@ import config from "../../config.json";
 import FavoriteWalker from "../walker/favoriteWalker";
 import TemplateCardTrainer from "../trainer/templateCardTrainer";
 import FavoriteTrainer from "../trainer/favoriteTrainer";
-import { toast } from "react-toastify";
 
 function Profile() {
   const [cookies] = useCookies(["data"]);
   const { data } = cookies;
-  const navigate = useNavigate();
   const [cardWalker, setCardWalker] = useState(false);
   const [cardTrainer, setCardTrainer] = useState(false);
   const [editW, setEditW] = useState(false);
@@ -34,20 +30,15 @@ function Profile() {
     try {
       if (data.dogWalker) {
         cardW = await cardServiceW.getCardsByUser(data._id);
-        setDataW({ card: cardW.data, user: data });
+
+        if (cardW.status === 200) {
+          setDataW({ card: cardW.data, user: data });
+        } else {
+          setDataW(null);
+        }
       }
     } catch ({ response }) {
       setDataW(null);
-      // ToastContainer
-      toast.error(response.data, {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
     }
   };
   const getTCard = async () => {
@@ -55,20 +46,14 @@ function Profile() {
     try {
       if (data.dogTrainer) {
         cardT = await cardServiceT.getCardsByUser(data._id);
-        setDataT({ card: cardT.data, user: data });
+        if (cardT.status === 200) {
+          setDataT({ card: cardT.data, user: data });
+        } else {
+          setDataT(null);
+        }
       }
     } catch ({ response }) {
       setDataT(null);
-      // ToastContainer
-      toast.error(response.data, {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
     }
   };
 

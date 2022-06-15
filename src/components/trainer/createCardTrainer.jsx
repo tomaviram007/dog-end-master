@@ -5,8 +5,6 @@ import cardService from "../../services/dogTrainer/cardServiceDogTrainer";
 import { toast } from "react-toastify";
 import commonService from "../../services/commonService";
 
-import Calendar from "./Calendar2";
-
 function CreateCardTrainer() {
   const [days, setDays] = useState({
     sun: { start: "", end: "", closed: true },
@@ -18,7 +16,6 @@ function CreateCardTrainer() {
     sat: { start: "", end: "", closed: true },
   });
 
-  const [errorServ, setErrorServ] = useState("");
   const [errorDay, setErrorDay] = useState("");
 
   const tagsToArray = (myTags) => {
@@ -68,7 +65,6 @@ function CreateCardTrainer() {
         //pic validation
         onSubmit={async (values) => {
           try {
-            setErrorServ("");
             setErrorDay("");
             let err = commonService.validateDays(days);
 
@@ -86,7 +82,6 @@ function CreateCardTrainer() {
             });
             window.location = "/profile";
           } catch ({ response }) {
-            setErrorServ(response.data);
             // ToastContainer
             toast.error(response.data, {
               position: "top-center",
@@ -220,9 +215,13 @@ function CreateCardTrainer() {
               >
                 רישום כרטיס
               </button>
-
-              {errorServ && <div className="text-danger">{errorServ}</div>}
             </form>
+            <button
+              className="mt-3 col-12 btn btn-danger "
+              onClick={() => (window.location = "/profile")}
+            >
+              ביטול
+            </button>
           </div>
         )}
       </Formik>

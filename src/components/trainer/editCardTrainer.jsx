@@ -265,6 +265,12 @@ function EditCardTrainer({ cardId, location }) {
                   </div>
                 </div>
               </form>
+              <button
+                className="mt-3 col-12 btn btn-danger "
+                onClick={() => (window.location = "/profile")}
+              >
+                ביטול
+              </button>
             </div>
           )}
         </Formik>

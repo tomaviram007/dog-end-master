@@ -1,8 +1,12 @@
 import React from "react";
 
+import { Container,Col,Row,InputGroup,FormControl} from "react-bootstrap";
+
+
+
 const AboutUs = () => {
   return (
-    <>
+    <Container fluid>
       <div className="row text-center mt-5">
         <h1 className="display-5 fw-bold" style={{ color: "red" }}>
           אודותינו
@@ -101,7 +105,7 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-    </>
+    </Container>
   );
 };
 

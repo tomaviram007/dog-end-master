@@ -5,10 +5,9 @@ import ReactPaginate from "react-paginate";
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useCookies } from "react-cookie";
-const TOKEN_KEY = "token";
 
 const AllUsers = () => {
-  const [cookies, setCookie] = useCookies(["data"]);
+  const [cookies] = useCookies(["data"]);
   const [load, setLoad] = useState(true);
   const [userInfo, setUserInf] = useState(null);
   const [pageNumber, setPageNumber] = useState(0);
@@ -31,8 +30,8 @@ const AllUsers = () => {
       setSearchUsers(info.data);
       setLoad(false);
     } catch ({ response }) {
-       // ToastContainer
-       toast.error( response.data, {
+      // ToastContainer
+      toast.error(response.data, {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -41,7 +40,6 @@ const AllUsers = () => {
         draggable: true,
         progress: undefined,
       });
-     
     }
   };
 
@@ -178,7 +176,6 @@ const AllUsers = () => {
             </thead>
             <tbody>{displayUsers}</tbody>
           </table>
-          
           <ReactPaginate
             previousLabel={"Previous"}
             nextLabel={"Next"}

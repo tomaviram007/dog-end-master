@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
 
 const Category = () => {
-  const [cookies, setCookie] = useCookies(["data"]);
+  const [cookies] = useCookies(["data"]);
 
   return (
     <div className="row center">

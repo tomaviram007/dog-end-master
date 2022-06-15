@@ -1,8 +1,7 @@
 import { Container } from "react-bootstrap";
 import userService from "../../../services/userService/userService";
 import { Formik } from "formik";
-
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { FaBackspace } from "react-icons/fa";
 

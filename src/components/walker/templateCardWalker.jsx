@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import userService from "../../services/userService/userService";
 import walkerService from "../../services/dogWalker/cardServiceDogWalker";
 import { useCookies } from "react-cookie";
 import config from "../../config.json";
 import { BsFillSuitHeartFill } from "react-icons/bs";
 import { BsHeart } from "react-icons/bs";
 import { toast } from "react-toastify";
+import ShowClock from "../clockMeet/showClock";
 
 //card: contain details about cardWalker
 //setUpdatePage:update favorite page when delete it from favorite
 const TemplateCardWalker = ({ card, setUpdatePage }) => {
-  const [cookies, setCookie] = useCookies(["data"]);
+  const [cookies] = useCookies(["data"]);
   const [load, setLoad] = useState({});
 
   //variable its contains true if the card in the favorite
@@ -48,7 +47,7 @@ const TemplateCardWalker = ({ card, setUpdatePage }) => {
         return;
       }
 
-      let user = await walkerService.addFavoriteCard({
+      await walkerService.addFavoriteCard({
         fDogWalker: [card.card._id],
       });
       setCardFv({ data: true });
@@ -176,6 +175,9 @@ const TemplateCardWalker = ({ card, setUpdatePage }) => {
             <h5> {`טלפון : ${card.user.phone}`}</h5>
             <h5> {`אימייל : ${card.user.email}`}</h5>
           </div>
+        </div>
+        <div className="row">
+          <ShowClock className="col-12" clock={card.card.meets} />
         </div>
         {/* Tags */}
         <div className="row ">

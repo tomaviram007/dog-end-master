@@ -1,14 +1,11 @@
 import userService from "../../../services/userService/userService";
 import config from "../../../config.json";
-import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import { BsWhatsapp } from "react-icons/bs";
 import { BsFillEnvelopeFill } from "react-icons/bs";
 import React, { useState, useEffect } from "react";
-
 import { toast } from "react-toastify";
 import { useCookies } from "react-cookie";
-const TOKEN_KEY = "token";
 
 const AllUsersOnline = () => {
   const [cookies] = useCookies(["data"]);
@@ -38,8 +35,8 @@ const AllUsersOnline = () => {
       setSearchUsers(info.data);
       setLoad(false);
     } catch ({ response }) {
-       // ToastContainer
-       toast.error(response.data, {
+      // ToastContainer
+      toast.error(response.data, {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -103,7 +100,7 @@ const AllUsersOnline = () => {
                 (window.location = `https:api.whatsapp.com/send?phone=${user.phone}`)
               }
             >
-              <BsWhatsapp/>
+              <BsWhatsapp />
             </button>
           </td>
         </tr>
@@ -129,17 +126,19 @@ const AllUsersOnline = () => {
   return (
     <>
       <div className=" d-flex row text-center">
-        <h1> <u>משתמשים מחוברים</u></h1>
+        <h1>
+          {" "}
+          <u>משתמשים מחוברים</u>
+        </h1>
       </div>
       {/* statistic */}
       <div className="d-flex m-3">
         <h4 className="mx-1">
-        {onlineStatic.numberUser} / <span style={{color: "green"}}> {onlineStatic.numberOnline}</span>  {" "} 
-          
-          <h4 > מחוברים</h4>
-           {" "}
+          {onlineStatic.numberUser} /{" "}
+          <span style={{ color: "green" }}> {onlineStatic.numberOnline}</span>{" "}
+          <h4> מחוברים</h4>{" "}
         </h4>
-             </div>
+      </div>
       {/* search input */}
       {userInfo.length ? (
         <>

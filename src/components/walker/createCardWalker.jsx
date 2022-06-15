@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
-// import "./createCardWalker.css";
 import Meets from "../clockMeet/Meets";
 import cardService from "../../services/dogWalker/cardServiceDogWalker";
 import commonService from "../../services/commonService";
@@ -17,7 +16,6 @@ function CreateCardWalker() {
     sat: { start: "", end: "", closed: true },
   });
 
-  const [errorServ, setErrorServ] = useState("");
   const [errorDay, setErrorDay] = useState("");
 
   const tagsToArray = (myTags) => {
@@ -29,7 +27,7 @@ function CreateCardWalker() {
     let arr = myTags.split(",");
 
     for (let val of arr) {
-      if (val != "" && val != null) {
+      if (val !== "" && val != null) {
         myArr.push(val);
       }
     }
@@ -65,7 +63,6 @@ function CreateCardWalker() {
       //pic validation
       onSubmit={async (values) => {
         try {
-          setErrorServ("");
           setErrorDay("");
           let err = commonService.validateDays(days);
 
@@ -82,7 +79,6 @@ function CreateCardWalker() {
           });
           window.location = "/profile";
         } catch ({ response }) {
-          setErrorServ(response.data);
           // ToastContainer
           toast.error(response.data, {
             position: "top-center",
@@ -200,8 +196,13 @@ function CreateCardWalker() {
             >
               רישום כרטיס
             </button>
-            {errorServ && <div className="text-danger">{errorServ}</div>}
           </form>
+          <button
+            className="mt-3 col-12 btn btn-danger "
+            onClick={() => (window.location = "/profile")}
+          >
+            ביטול
+          </button>
         </div>
       )}
     </Formik>

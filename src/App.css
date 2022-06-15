@@ -384,7 +384,7 @@ select {
   background-color: rgba(50, 50, 50, 0.415);
 }
 
-.footer {
+/* .footer {
   position: static;
 
   left: 0;
@@ -393,4 +393,14 @@ select {
   background-color: rgba(112, 150, 165, 0.467);
   color: white;
   text-align: center;
+} */
+
+.ROUTES{
+  overflow:auto;
+
+  height:89vh;
 }
+/* 
+.BCKground{
+  background-color:transparent;
+} */

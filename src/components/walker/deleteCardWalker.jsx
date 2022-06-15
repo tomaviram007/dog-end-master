@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import WalkerService from "../../services/dogWalker/cardServiceDogWalker";
 
-function DeleteCardWalker({}) {
+function DeleteCardWalker() {
   const params = useParams();
   const nav = useNavigate();
   const deleteCard = async () => {

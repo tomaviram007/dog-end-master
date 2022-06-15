@@ -1,4 +1,3 @@
-import { Container } from "react-bootstrap";
 import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
 
@@ -51,7 +50,9 @@ const AllCards = ({
           <br />
           {pageNumber === 0 && (
             <div className="mb-4 row d-flex justify-content-center ">
-              <label className=" d-flex justify-content-center">חיפוש בעל מקצוע לפי שם:</label>
+              <label className=" d-flex justify-content-center">
+                חיפוש בעל מקצוע לפי שם:
+              </label>
               <br />
               <input
                 placeholder="חפש/י פה ...🔍"

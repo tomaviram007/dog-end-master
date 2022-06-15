@@ -23,6 +23,10 @@ export function getInfoUserById(idUser) {
   return httpService.get(`${config.apiUrl}/user/${idUser}`);
 }
 
+export function contactUs(data) {
+  return httpService.post(`${config.apiUrl}/user/contactUs`, data);
+}
+
 export function getAllUsers() {
   return httpService.get(`${config.apiUrl}/user`);
 }
@@ -107,6 +111,7 @@ const service = {
   updateOnline,
   getAllUsersOnline,
   getStaticOnline,
+  contactUs,
 };
 
 export default service;

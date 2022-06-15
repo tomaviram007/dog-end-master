@@ -2,13 +2,10 @@ import userService from "../../../services/userService/userService";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import config from "../../../config.json";
 import { useNavigate } from "react-router-dom";
-
 import { Formik } from "formik";
-
 import React, { useState, useEffect } from "react";
-
 import "./signUp.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 import { useParams } from "react-router-dom";
 const TOKEN_KEY = "token";
@@ -18,7 +15,7 @@ const getDateFormat = (date) => {
     return "";
   }
 
-  //conatan date in pices
+  //contain date in pices
   let arr = date.split("-");
   let arr2 = arr[2].split("T");
 

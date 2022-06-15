@@ -12,7 +12,6 @@ function EditCardWalker({ cardId, location }) {
   const [days, setDays] = useState("");
   const [errorDay, setErrorDay] = useState("");
   const [load, setLoad] = useState(true);
-  const [errorServ, setErrorServ] = useState("");
   const [card, setCard] = useState("");
 
   const getData = async () => {
@@ -85,7 +84,6 @@ function EditCardWalker({ cardId, location }) {
           //pic validation
           onSubmit={async (values) => {
             try {
-              setErrorServ("");
               setErrorDay("");
               let err = commonService.validateDays(days);
 
@@ -106,7 +104,6 @@ function EditCardWalker({ cardId, location }) {
 
               window.location = `/${loc}`;
             } catch ({ response }) {
-              setErrorServ(response.data);
               // ToastContainer
               toast.error(response.data, {
                 position: "top-center",
@@ -234,12 +231,15 @@ function EditCardWalker({ cardId, location }) {
                     >
                       עדכון כרטיס
                     </button>
-                    {errorServ && (
-                      <div className="text-danger">{errorServ}</div>
-                    )}
                   </div>
                 </div>
               </form>
+              <button
+                className="mt-3 col-12 btn btn-danger "
+                onClick={() => (window.location = "/profile")}
+              >
+                ביטול
+              </button>
             </div>
           )}
         </Formik>

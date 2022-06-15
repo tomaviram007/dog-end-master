@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import userService from "../../services/userService/userService";
 import trainerService from "../../services/dogTrainer/cardServiceDogTrainer";
 import AllCards from "../common/allCards";
-import { Container } from "react-bootstrap";
 
 const AllTrainersCards = () => {
   const [cards, setCards] = useState([]);

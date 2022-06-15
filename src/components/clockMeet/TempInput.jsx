@@ -1,17 +1,7 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState } from "react";
 import { Formik } from "formik";
 import { toast } from "react-toastify";
 
-const createTime = () => {
-  let html = "";
-
-  for (let i = 7; i < 19; i++) {
-    html += `<option value=${i}>${i}:00</option>`;
-  }
-
-  return html;
-};
 const TempInput = ({ setDay, day }) => {
   const [chk, setChk] = useState(day.closed);
 

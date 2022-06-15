@@ -1,8 +1,5 @@
 import Category from "./category";
-import { useCookies } from "react-cookie";
 
-import { useEffect } from "react";
-import userService from "../../services/userService/userService";
 const Home = () => {
   return (
     <>

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-
-import { Formik } from "formik";
 import TempInput from "./TempInput";
 
 const Meets = ({ setDays, days }) => {
@@ -13,13 +11,11 @@ const Meets = ({ setDays, days }) => {
   const [sat, setSat] = useState(days.sat);
 
   useEffect(() => {
-    console.log(days);
     setDays({ sun, mon, tues, wen, turs, fri, sat });
   }, [sun, mon, tues, wen, turs, fri, sat]);
 
   return (
     <div className="d-flex flex-column textSizeSelect">
-      
       <label>ראשון:</label> <TempInput setDay={setSun} day={sun} />
       <label>שני:</label> <TempInput setDay={setMon} day={mon} />
       <label>שלישי:</label> <TempInput setDay={setTues} day={tues} />

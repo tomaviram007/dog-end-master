@@ -59,6 +59,9 @@ function App() {
     <BrowserRouter>
       <ToastContainer />
       <Navbar />
+      <div className="ROUTES">
+
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
@@ -117,6 +120,7 @@ function App() {
         />
         <Route path="/allUsersOnline" element={<AllUsersOnline />} />
       </Routes>
+      </div>
       <Footer className="footer-all" />
     </BrowserRouter>
   );

@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import userService from "../../services/userService/userService";
 import trainerService from "../../services/dogTrainer/cardServiceDogTrainer";
 import { useCookies } from "react-cookie";
 import config from "../../config.json";
 import { BsHeart } from "react-icons/bs";
 import { BsFillSuitHeartFill } from "react-icons/bs";
 import { toast } from "react-toastify";
+import ShowClock from "../clockMeet/showClock";
 
 //card: contain details about cardWalker
 //setUpdatePage:update favorite page when delete it from favorite
 const TemplateCardTrainer = ({ card, setUpdatePage }) => {
-  const [cookies, setCookie] = useCookies(["data"]);
+  const [cookies] = useCookies(["data"]);
   const [load, setLoad] = useState({});
 
   //variable its contains true if the card in the favorite
@@ -28,8 +27,8 @@ const TemplateCardTrainer = ({ card, setUpdatePage }) => {
       setCardFv(flag);
       setLoad(false);
     } catch (response) {
-       // ToastContainer
-       toast.error(response.data, {
+      // ToastContainer
+      toast.error(response.data, {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -48,7 +47,7 @@ const TemplateCardTrainer = ({ card, setUpdatePage }) => {
         return;
       }
 
-      let user = await trainerService.addFavoriteCard({
+      await trainerService.addFavoriteCard({
         fDogTrainer: [card.card._id],
       });
 
@@ -73,7 +72,6 @@ const TemplateCardTrainer = ({ card, setUpdatePage }) => {
         return;
       }
 
-      console.log(card.card._id);
       await trainerService.deleteFavoriteCard({
         fDogTrainer: [card.card._id],
       });
@@ -83,8 +81,8 @@ const TemplateCardTrainer = ({ card, setUpdatePage }) => {
         window.location = "/favoriteTrainer";
       }
     } catch ({ response }) {
-       // ToastContainer
-       toast.error(response.data, {
+      // ToastContainer
+      toast.error(response.data, {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -165,7 +163,7 @@ const TemplateCardTrainer = ({ card, setUpdatePage }) => {
                 className="FavoriteDele_btn"
                 onClick={deleteFavoriteCard}
               >
-                 <BsFillSuitHeartFill />
+                <BsFillSuitHeartFill />
               </button>
             )}
           </div>
@@ -178,6 +176,9 @@ const TemplateCardTrainer = ({ card, setUpdatePage }) => {
             <h5> {`טלפון : ${card.user.phone}`}</h5>
             <h5> {`אימייל : ${card.user.email}`}</h5>
           </div>
+        </div>
+        <div className="row">
+          <ShowClock className="col-12" clock={card.card.meets} />
         </div>
         {/* Tags */}
         <div className="row ">
